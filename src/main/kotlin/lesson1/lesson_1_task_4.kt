@@ -1,3 +1,5 @@
+package lesson1
+
 //... подумать на досуге ...
 fun main(){
     val length: Long = 40868600000
