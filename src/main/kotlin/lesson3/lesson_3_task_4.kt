@@ -6,11 +6,11 @@ fun main() {
     var fromWhereGait = "E2"
     var whereToGait = "E4"
 
-    println("[$fromWhereGait - $whereToGait ; ход №$gaitNumber]")
+    println("[$fromWhereGait-$whereToGait;$gaitNumber]")
 
     gaitNumber = 2
     fromWhereGait = "D2"
     whereToGait = "D3"
 
-    println("[$fromWhereGait - $whereToGait ; ход №$gaitNumber]")
+    println("[$fromWhereGait-$whereToGait;$gaitNumber]")
 }
