@@ -1,4 +1,5 @@
 package lesson2
+
 // ... London is the capital of Great Britain ...
 fun main() {
     val balFirstStudent = 3
@@ -7,10 +8,7 @@ fun main() {
     val balFourthStudent = 5
     var resultNew: Float = 0.0f
 
-
-    resultNew = (balFirstStudent+balSecondStudent+balThirdStudent+balFourthStudent).toFloat()/2
+    resultNew = (balFirstStudent + balSecondStudent + balThirdStudent + balFourthStudent).toFloat() / 2
 
     println("Результат: ${String.format("%.2f", resultNew)}")
-
-
 }
