@@ -17,17 +17,11 @@ fun main() {
     )
     val nameOfUser = "Макс"
     val hoursTime = LocalTime.now(Clock.system(ZoneId.systemDefault())).hour
-    val resultGreeting =
-        if (hoursTime in 6..11) {
-            "${listOfGreetings[0]} $nameOfUser"
-        } else if (hoursTime in 12..17) {
-            "${listOfGreetings[1]} $nameOfUser"
-        } else if (hoursTime in 18..21) {
-            "${listOfGreetings[2]} $nameOfUser"
-        } else {
-            "${listOfGreetings[3]} $nameOfUser"
-        }
 
-    println(resultGreeting)
-
+    when (hoursTime) {
+        in 6..11 -> println("${listOfGreetings[0]} $nameOfUser")
+        in 12..17 -> println("${listOfGreetings[1]} $nameOfUser")
+        in 18..21 -> println("${listOfGreetings[2]} $nameOfUser")
+        else -> println("${listOfGreetings[3]} $nameOfUser")
+    }
 }
