@@ -2,21 +2,20 @@ package lesson3
 
 // ... умножение - умно-жить ...
 
-//  Пока не понял как сделать, если не ввести число,
-//  что бы повторялась запись пока не введут и программа не завершалась.
-
 fun main() {
 
-    println("Введите число для таблицы умножения и нажмите интер")
-    val numberForCalculation: String = readlnOrNull().orEmpty()
-    var result = 0
+    val result = 7
 
-    if (numberForCalculation.isNotEmpty()) {
-        for (i in 0..9) {
-            result = numberForCalculation.toInt() * i
-            println("$numberForCalculation x $i = $result")
-        }
-    } else {
-        println("Вы не ввели ни какого числа. Досвидания.")
-    }
+    println(
+        " Таблица умножения:" +
+                "$result x 1 = ${result * 1}\n" +
+                "$result x 2 = ${result * 2}\n" +
+                "$result x 3 = ${result * 3}\n" +
+                "$result x 4 = ${result * 4}\n" +
+                "$result x 5 = ${result * 5}\n" +
+                "$result x 6 = ${result * 6}\n" +
+                "$result x 7 = ${result * 7}\n" +
+                "$result x 8 = ${result * 8}\n" +
+                "$result x 9 = ${result * 9}"
+    )
 }
