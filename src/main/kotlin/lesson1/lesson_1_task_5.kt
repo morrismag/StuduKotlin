@@ -8,9 +8,14 @@ fun main() {
     minutesOfFirstFlight = secondsOfFirstFlight / 60
     remainsSecond = secondsOfFirstFlight - minutesOfFirstFlight * 60
 
-    if (remainsSecond in 0..9) {
-        println("Гагарин провел в космосе: $minutesOfFirstFlight:0$remainsSecond  в минутах")
-    } else {
-        println("Гагарин провел в космосе: $minutesOfFirstFlight:$remainsSecond в минутах")
-    }
+    println(
+        "Гагарин провел в космосе: " +
+                "${String.format("%02d:%02d", minutesOfFirstFlight, remainsSecond)} минут"
+    )
+
+    /* if (remainsSecond in 0..9) {
+         println("Гагарин провел в космосе: $minutesOfFirstFlight:0$remainsSecond  в минутах")
+     } else {
+         println("Гагарин провел в космосе: $minutesOfFirstFlight:$remainsSecond в минутах")
+     } */
 }
