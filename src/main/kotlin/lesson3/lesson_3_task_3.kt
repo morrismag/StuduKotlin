@@ -5,7 +5,7 @@ package lesson3
 //  Пока не понял как сделать, если не ввести число,
 //  что бы повторялась запись пока не введут и программа не завершалась.
 
-fun main() {
+fun main()  {
 
     println("Введите число для таблицы умножения и нажмите интер")
     val numberForCalculation: String = readlnOrNull().orEmpty()
