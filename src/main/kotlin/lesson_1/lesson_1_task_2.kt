@@ -8,14 +8,14 @@ fun main() {
     println("Благодарность: \"$titleGratitude\"")
     println()
 
-    val storeStaff: Int = 2000
+    var storeStaff: Int = 2000
 
-    //println("Персонал магазина составляет $storeStaff человек")
+    // println("Персонал магазина составляет $storeStaff человек")
 
-    val storeStaffAfterParty: Int = storeStaff - 1
+    storeStaff = 2000 - 1
     println(
-        "$storeStaff негритят отправились обедать,\n" +
-                "Один поперхнулся, их осталось $storeStaffAfterParty."
+        "${storeStaff + 1} негритят отправились обедать,\n" +
+                "Один поперхнулся, их осталось $storeStaff."
     )
 
 }
