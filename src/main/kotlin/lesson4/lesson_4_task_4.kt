@@ -3,11 +3,16 @@ package lesson4
 
 fun main() {
     val numberOfTrainingDay = 8
+    val parityOfDay: Boolean = (numberOfTrainingDay % 2 ==0)
+    val handsPart: Boolean = !parityOfDay
+    val legsPart: Boolean = parityOfDay
+    val backPart: Boolean = parityOfDay
+    val abdominalPressPart: Boolean = !parityOfDay
 
     println(
-                "Упражнения для рук:    ${numberOfTrainingDay % 2 != 0}\n" +
-                "Упражнения для ног:    ${numberOfTrainingDay % 2 == 0}\n" +
-                "Упражнения для спины:  ${numberOfTrainingDay % 2 == 0}\n" +
-                "Упражнения для пресса: ${numberOfTrainingDay % 2 != 0}"
+                "Упражнения для рук:    $handsPart\n" +
+                "Упражнения для ног:    $legsPart\n" +
+                "Упражнения для спины:  $backPart\n" +
+                "Упражнения для пресса: $abdominalPressPart"
     )
 }
