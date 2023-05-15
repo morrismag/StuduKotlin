@@ -6,17 +6,7 @@ package lesson4
 // т.е. прогу дорабатывать и дорабатывать.
 
 fun main() {
-    val conditionFirstBodyShip = false
-    val conditionFirstMinCrew = 55
-    val conditionFirstBestCrew = 70
-    val conditionFirstEat = 50
-    val conditionFirstWeather = true
-    val conditionFirstWeather1 = false
 
-    val conditionSecondBodyShip = true
-    val conditionSecondBestCrew = 70
-    val conditionSecondEat = 50
-    val conditionSecondWeather = true
 
     println(
         "Для запуска коробля ответте на следующие вопросы:\n" +
@@ -31,24 +21,17 @@ fun main() {
     val weather: Boolean = readln().toBoolean()
     println()
 
-    val result: Boolean =
-        if (((bodyShip == conditionFirstBodyShip)
-            && (crew >= conditionFirstMinCrew)
-            && (crew < conditionFirstBestCrew)
-            && (eat > conditionFirstEat)
-            && ((weather == conditionFirstWeather) || (weather == conditionFirstWeather1)))
-            ||(((bodyShip == conditionSecondBodyShip)
-              && (crew == conditionSecondBestCrew)
-              && (eat > conditionSecondEat)
-              && (weather == conditionSecondWeather)
-            )))
-        {
-            true
-        }
-        else
-        {
-            false
-        }
+    val firstCondition: Boolean = ((bodyShip == CON_FIRST_BODY_SHIP)
+            && (crew >= CON_FIRST_MIN_CREW)
+            && (crew < CON_FIRST_BEST_CREW)
+            && (eat > CON_FIRST_EAT)
+            && ((weather == CON_FIRST_WEATHER) || (weather == CON_FIRST_WEATHER1)))
+    val secondCondition: Boolean = (((bodyShip == CON_SECOND_BODY_SHIP)
+            && (crew == CON_SECOND_BEST_CREW)
+            && (eat > CON_SECOND_EAT)
+            && (weather == CON_SECOND_WEATHER)
+            ))
+    val result: Boolean = (firstCondition || secondCondition)
 
     println(
         "Анализ состояния коробля:\n" +
@@ -61,3 +44,15 @@ fun main() {
                 "$result "
     )
 }
+
+const val CON_FIRST_BODY_SHIP = false
+const val CON_FIRST_MIN_CREW = 55
+const val CON_FIRST_BEST_CREW = 70
+const val CON_FIRST_EAT = 50
+const val CON_FIRST_WEATHER = true
+const val CON_FIRST_WEATHER1 = false
+
+const val CON_SECOND_BODY_SHIP = true
+const val CON_SECOND_BEST_CREW  = 70
+const val CON_SECOND_EAT = 50
+const val CON_SECOND_WEATHER = true
