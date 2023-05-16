@@ -13,5 +13,5 @@ fun main() {
 
     val result = readln()
     if (result == sumNum.toString()) println("Добро пожаловать!")
-        else println("Доступ запрещен!!!")
+    else println("Доступ запрещен!!!")
 }
