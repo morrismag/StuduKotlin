@@ -1,4 +1,5 @@
 package lesson5
+
 // ... Ах какой же я придумал пароль ...
 fun main() {
     println("Приветствуем Вас пользователь. \n Введите логин:")
@@ -6,8 +7,8 @@ fun main() {
     if (loginU == LOGIN_USER) {
         println("Введите пароль")
         val paswordU = readln()
-            if (paswordU == PASSWORD_USER) println("Мы рады вас снова видеть $loginU.")
-            else println("Неправильно введен пароль. Попробуйте еще раз.")
+        if (paswordU == PASSWORD_USER) println("Мы рады вас снова видеть $loginU.")
+        else println("Неправильно введен пароль. Попробуйте еще раз.")
     } else println("Такой пользователь не зарегистрирован. Пройдите, пожалуйста, регистрацию.")
 }
 
