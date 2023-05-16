@@ -7,7 +7,6 @@ package lesson4
 
 fun main() {
 
-
     println(
         "Для запуска коробля ответте на следующие вопросы:\n" +
                 "Поврежден ли корабль?\n (ввести только - true/false это соответствует да/нет):"
@@ -23,13 +22,13 @@ fun main() {
 
     val firstCondition: Boolean = ((bodyShip == CON_FIRST_BODY_SHIP)
             && (crew >= CON_FIRST_MIN_CREW)
-            && (crew < CON_FIRST_BEST_CREW)
-            && (eat > CON_FIRST_EAT)
-            && ((weather == CON_FIRST_WEATHER) || (weather == CON_FIRST_WEATHER1)))
+            && (crew < CON_FIRST_SECOND_BEST_CREW)
+            && (eat > CON_FIRST_SECOND_EAT)
+            && ((weather == CON_FIRST_SECOND_WEATHER) || (weather == CON_FIRST_WEATHER)))
     val secondCondition: Boolean = (((bodyShip == CON_SECOND_BODY_SHIP)
-            && (crew == CON_SECOND_BEST_CREW)
-            && (eat > CON_SECOND_EAT)
-            && (weather == CON_SECOND_WEATHER)
+            && (crew == CON_FIRST_SECOND_BEST_CREW)
+            && (eat > CON_FIRST_SECOND_EAT)
+            && (weather == CON_FIRST_SECOND_WEATHER)
             ))
     val result: Boolean = (firstCondition || secondCondition)
 
@@ -46,13 +45,9 @@ fun main() {
 }
 
 const val CON_FIRST_BODY_SHIP = false
-const val CON_FIRST_MIN_CREW = 55
-const val CON_FIRST_BEST_CREW = 70
-const val CON_FIRST_EAT = 50
-const val CON_FIRST_WEATHER = true
-const val CON_FIRST_WEATHER1 = false
-
 const val CON_SECOND_BODY_SHIP = true
-const val CON_SECOND_BEST_CREW  = 70
-const val CON_SECOND_EAT = 50
-const val CON_SECOND_WEATHER = true
+const val CON_FIRST_MIN_CREW = 55
+const val CON_FIRST_SECOND_BEST_CREW = 70
+const val CON_FIRST_SECOND_EAT = 50
+const val CON_FIRST_SECOND_WEATHER = true
+const val CON_FIRST_WEATHER = false
