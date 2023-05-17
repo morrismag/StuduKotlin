@@ -20,15 +20,15 @@ fun main() {
     val weather: Boolean = readln().toBoolean()
     println()
 
-    val firstCondition: Boolean = ((bodyShip == CON_FIRST_BODY_SHIP)
-            && (crew >= CON_FIRST_MIN_CREW)
-            && (crew < CON_FIRST_SECOND_BEST_CREW)
-            && (eat > CON_FIRST_SECOND_EAT)
-            && ((weather == CON_FIRST_SECOND_WEATHER) || (weather == CON_FIRST_WEATHER)))
-    val secondCondition: Boolean = (((bodyShip == CON_SECOND_BODY_SHIP)
-            && (crew == CON_FIRST_SECOND_BEST_CREW)
-            && (eat > CON_FIRST_SECOND_EAT)
-            && (weather == CON_FIRST_SECOND_WEATHER)
+    val firstCondition: Boolean = ((bodyShip == false)
+            && (crew >= CON_MIN_CREW)
+            && (crew < CON_BEST_CREW)
+            && (eat > CON_EAT)
+            && ((weather == false) || (weather == true)))
+    val secondCondition: Boolean = (((bodyShip == true)
+            && (crew == CON_BEST_CREW)
+            && (eat > CON_EAT)
+            && (weather == true)
             ))
     val result: Boolean = (firstCondition || secondCondition)
 
@@ -44,10 +44,6 @@ fun main() {
     )
 }
 
-const val CON_FIRST_BODY_SHIP = false
-const val CON_SECOND_BODY_SHIP = true
-const val CON_FIRST_MIN_CREW = 55
-const val CON_FIRST_SECOND_BEST_CREW = 70
-const val CON_FIRST_SECOND_EAT = 50
-const val CON_FIRST_SECOND_WEATHER = true
-const val CON_FIRST_WEATHER = false
+const val CON_MIN_CREW = 55
+const val CON_BEST_CREW = 70
+const val CON_EAT = 50
