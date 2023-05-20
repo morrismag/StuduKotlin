@@ -8,9 +8,8 @@ fun main() {
     var numResult = readln().toInt()
     var index = 4
     while ((index > 0) && (numResult != NUMBER_WIN)) {
-        println("Неверно. Осталось  ${index} попыток. Попробуй еще раз:")
+        println("Неверно. Осталось  ${index--} попыток. Попробуй еще раз:")
         numResult = readln().toInt()
-        index--
     }
     if (numResult == NUMBER_WIN) println("Это была великолепная игра!")
     else println("Ты проиграл. Было загадано число $NUMBER_WIN")
