@@ -1,14 +1,13 @@
 package lesson7
 
-// ... случайный поворот ...
+// ... если так сделать, то сторочку авторизации нельзя изменить она повторяется ...
 fun main() {
-    var smsNumber = (1000..9999).random()
-    println("Ваш код авторизации ${smsNumber}.\nВведите его:")
-    var authorisationNumber = readln().toInt()
-    while (authorisationNumber != smsNumber) {
-        smsNumber = (1000..9999).random()
-        println("Ваш новый код авторизации ${smsNumber}.\n Введите его:")
-        authorisationNumber = readln().toInt()
-    }
+
+    do {
+        val smsNumber = (1000..9999).random()
+        println("Ваш код авторизации $smsNumber.\n Введите его:")
+        val authorisationNumber = readln().toIntOrNull()
+    } while (authorisationNumber != smsNumber)
+
     println("Авторизация прошла. Добро пожаловать!")
 }
