@@ -7,8 +7,7 @@ package lesson6
 fun main() {
 
     println(
-        "Уважаемый пользователь, зарегистрируйте, пожалуйста, свой новый аккаунт!\n" +
-                "Введите Login:"
+        "Уважаемый пользователь, зарегистрируйте, пожалуйста, свой новый аккаунт!\nВведите Login:"
     )
     val loginNewUser = readln()
     println("Введите пароль:")
@@ -18,8 +17,7 @@ fun main() {
 
     while (passwordNewUser != passwordConfirmation) {
         println(
-            "Значение пароля не совпали.\n" +
-                    "Повторите ввод"
+            "Значение пароля не совпали.\nПовторите ввод"
         )
         passwordConfirmation = readln()
     }
@@ -27,24 +25,20 @@ fun main() {
     Thread.sleep(2000)
 
     println(
-        "\nАвторизация пользователя\n" +
-                "Введите логин:"
+        "\nАвторизация пользователя\nВведите логин:"
     )
     var loginUser = readln()
     while (loginUser != loginNewUser) {
         println(
-            "Такой пользователь не зарегистрирован.\n" +
-                    "Введите логин снова."
+            "Такой пользователь не зарегистрирован.\nВведите логин снова."
         )
         loginUser = readln()
     }
-
     println("Введите пароль:")
     var passwordUser = readln()
     while (passwordUser != passwordNewUser) {
         println(
-            "Пароль не верен.\n" +
-                    "Введите пароль снова."
+            "Пароль не верен.\nВведите пароль снова."
         )
         passwordUser = readln()
     }
