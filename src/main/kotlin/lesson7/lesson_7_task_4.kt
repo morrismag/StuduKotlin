@@ -1,17 +1,17 @@
 package lesson7
 
-// ... режь красный провод.
-// Но в фильмах же синий.
-// Синий я уже перерезал. Режь гово...БУММММ!!! ...
+// ... на сегоднешнем уровне я пока не могу вменяемую обработку ошибок написать, если введен текст или ничего,
+// если не буду ипользовать !!...
 fun main() {
     println("Введите кол-во секунд от 1 до 20:")
-    var secondQuantity = readln().toIntOrNull()
+    var secondQuantity = readln().toInt()
+
     while (secondQuantity !in (1..20)) {
         println("Ну тебя же попросили ввести число от 1 до 20. Попробуй снова:")
-        secondQuantity = readln().toIntOrNull()
+        secondQuantity = readln().toInt()
     }
-    for (i in secondQuantity!! downTo 0) {
-        // Иван объясни вкраце почему secondQuantity!! работает,а без него нет, т.е что "!!" означает
+
+    for (i in secondQuantity downTo 1) {
         println("Осталось $i секунд.")
         Thread.sleep(1000)
     }
