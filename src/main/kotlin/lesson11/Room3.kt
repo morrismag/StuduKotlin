@@ -1,6 +1,6 @@
 package lesson11
 
-class Room(
+class Room3(
     val id: Int,
     val imgRoom: String,
     val nameRoom: String,
