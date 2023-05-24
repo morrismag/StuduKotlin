@@ -9,19 +9,22 @@ fun main() {
         numberOfPassword = readln().toIntOrNull() ?: 0
     }
 
-    generationPassword(numberOfPassword)
+    generatePassword(numberOfPassword)
 }
 
-fun generationPassword(numberOfPassword: Int) {
-    val charPart: MutableList<Char> = ("!\"#\$%&'()*+,-./ ").toMutableList()
-    val numPart: MutableList<Char> = ("123456789").toMutableList()
-    val resultPassword: Array<String> = Array(numberOfPassword) { "" }
+fun generatePassword(numberOfPassword: Int) {
 
-    for (i in resultPassword.indices) {
-        if ((i % 2) != 0) {
-            resultPassword[i] = charPart.random().toString()
-        } else resultPassword[i] = numPart.random().toString()
+    val charPart = (33..47).toList().map { it.toChar() }
+    val numPart = (1..9).toList()
+    var resultPassword = ""
+
+    for (i in 1..numberOfPassword) {
+        val charPassword =
+            if ((i % 2) != 0) {
+                charPart.random().toString()
+            } else numPart.random().toString()
+        resultPassword += charPassword
     }
 
-    println("Вот тебе пароль:${resultPassword.joinToString("")}")
+    println("Вот тебе пароль:$resultPassword")
 }
