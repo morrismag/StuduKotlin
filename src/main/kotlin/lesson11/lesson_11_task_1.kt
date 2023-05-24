@@ -1,12 +1,20 @@
 package lesson11
 
+class User(
+    val idUser: Int,
+    val loginUser: String,
+    val passwordUser: String,
+    val emailUser: String,
+) {
+}
+
 fun main() {
     val userSergey = User(
         1,
         "Sergik",
         "qwe",
         "sergik@ya.ru",
-            )
+    )
     val userYra = User(
         2,
         "Yra",
@@ -25,3 +33,4 @@ fun main() {
     println(userYra.passwordUser)
     println(userYra.emailUser)
 }
+
