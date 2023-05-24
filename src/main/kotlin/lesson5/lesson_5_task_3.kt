@@ -7,12 +7,13 @@ fun main() {
     val firstNumber = readln().toInt()
     println("Число 2:")
     val secondNumber = readln().toInt()
+
     when {
-        ((firstNumber == FIRST_NUMBER_WIN) && (secondNumber == SECOND_NUMBER_WIN)) ->
+        (((firstNumber == FIRST_NUMBER_WIN) && (secondNumber == SECOND_NUMBER_WIN)) ||
+                ((firstNumber == SECOND_NUMBER_WIN) && (secondNumber == FIRST_NUMBER_WIN))) ->
             println("Поздравляем! Вы выйграли главный приз!!!")
 
-        (((firstNumber == FIRST_NUMBER_WIN) && (secondNumber != SECOND_NUMBER_WIN)) ||
-                ((firstNumber != FIRST_NUMBER_WIN) && (secondNumber == SECOND_NUMBER_WIN))) ->
+        ((firstNumber == FIRST_NUMBER_WIN) || (secondNumber == SECOND_NUMBER_WIN)) ->
             println("Вы выйграли утешительный приз!")
 
         else -> println("Неудача! Крутите барабан!")
