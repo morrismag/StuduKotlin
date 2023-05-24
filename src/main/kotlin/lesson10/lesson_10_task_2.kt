@@ -2,29 +2,34 @@ package lesson10
 
 fun main() {
     println("Для регистрации на портале введите логин (не менее 4-х символов):")
-    var loginUserEnter = readln()
-
-    while (checkEnter(loginUserEnter) == 0) {
-        loginUserEnter = readln()
-    }
-
-    println("\nВведите новый пароль (не менне 4-х символов):")
-    var passwordUser = readln()
-
-    while (checkEnter(passwordUser) == 0) {
-        passwordUser = readln()
-    }
-
+    val loginUserEnter = cycleEnterLogin()
+    println("\nВведите новый пароль (не менее 4-х символов):")
+    val passwordUser = cycleEnterPassword()
     println("Ваш логин \"$loginUserEnter\", пароль \"$passwordUser\"")
 }
 
-fun checkEnter(enter: String): Int {
-    val result = if (enter.length > 4) {
-        println("Допустимое значение.")
-        1
-    } else {
-        println("Значение меньше 4-х символов. Введите снова:")
-        0
+fun checkEnter(enter: String): Boolean {
+    return enter.length >= 4
+}
+
+fun cycleEnterLogin(): String {
+    var loginUserEnter = readln()
+
+    while (!checkEnter(loginUserEnter)) {
+        println("НЕ МЕНЕЕ это больше или равно четырех символов! Вводи:")
+        loginUserEnter = readln()
     }
-    return result
+
+    return loginUserEnter
+}
+
+fun cycleEnterPassword(): String {
+    var passwordUser = readln()
+
+    while (!checkEnter(passwordUser)) {
+        println("НЕ МЕНЕЕ это больше или равно четырех символов! Вводи:")
+        passwordUser = readln()
+    }
+
+    return passwordUser
 }
