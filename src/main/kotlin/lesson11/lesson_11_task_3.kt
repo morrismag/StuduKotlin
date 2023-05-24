@@ -1,6 +1,24 @@
 package lesson11
 
 // ... не совсем понял задание...
+
+class Room3(
+    val id: Int,
+    val imgRoom: String,
+    val nameRoom: String,
+    val usersRoom: Array<String>
+) {
+}
+
+class User3(
+    val id: Int,
+    val imgUser: String,
+    val nikNameUser: String,
+    val badgeUser: String,
+    var statusUser: String = "Микрофон выключен"
+) {
+}
+
 fun main() {
     val roomOne = Room3(
         1,
