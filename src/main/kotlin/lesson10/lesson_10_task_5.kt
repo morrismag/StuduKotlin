@@ -4,7 +4,7 @@ fun main() {
     println("Для регистрации придумайте логин не менее 4-х символов:")
     var loginUser = readln()
 
-    while (checkEnter(loginUser) == 0){
+    while (!checkEnter(loginUser)) {
         loginUser = readln()
     }
 
@@ -15,7 +15,7 @@ fun main() {
     println("Введите пароль:")
     var passwordUserEnter = readln()
 
-    while (checkLoginPasswordEnter(loginUser, passwordUser, loginUserEnter, passwordUserEnter) == 0){
+    while (!checkLoginPasswordEnter(loginUser, passwordUser, loginUserEnter, passwordUserEnter)) {
         println("Введите снова логин:")
         loginUserEnter = readln()
         println("Введите снова пароль:")
@@ -27,29 +27,28 @@ fun main() {
     println("Введите код авторизации:")
     var codeAuthorizationEnter = readln()
 
-    while (checkCode(codeAuthorization,codeAuthorizationEnter) == 0){
-        codeAuthorization =(1000..9999).random().toString()
+    while (!checkCode(codeAuthorization, codeAuthorizationEnter)) {
+        codeAuthorization = (1000..9999).random().toString()
         println("Вам повторно выслан код авторизации: $codeAuthorization")
         codeAuthorizationEnter = readln()
     }
-
 }
 
-fun checkEnter(enter: String): Int {
+fun checkEnter(enter: String): Boolean {
     val result = if (enter.length >= 4) {
         println("Логин принят.")
-        1
+        true
     } else {
         println("Значение меньше 4-х символов. Введите снова:")
-        0
+        false
     }
     return result
 }
 
 fun generationPassword(numberOfPassword: Int): String {
-    val numPart: MutableList<Char> = ("123456789").toMutableList()
+    val numPart = (1..9).toList()
     val randomChars = ('1'..'9') + ('a'..'z') + ('A'..'Z') +
-            '!' + '"' + '#' + '$' + '%' + '&' + '\'' + '(' + ')' + '*' + '+' + ',' + '-' + '.' + '/'
+            (33..47).toList().map { it.toChar() }
     val resultPassword: Array<String> = Array(numberOfPassword) { "" }
 
     for (i in 0 until numberOfPassword) {
@@ -57,27 +56,27 @@ fun generationPassword(numberOfPassword: Int): String {
             resultPassword[i] = randomChars.random().toString()
         } else resultPassword[i] = numPart.random().toString()
     }
-
     return resultPassword.joinToString("")
 }
 
-fun checkLoginPasswordEnter(login: String, password:String, loginEnter: String, passwordEnter: String): Int {
-    val result = if ((login == loginEnter) && (password==passwordEnter)) {
-        println("Авторизация пройдена успешно!")
-        1
-    } else {
-        println("Вы неправильно ввели или логин или пароль. Введите снова:")
-        0
-    }
+fun checkLoginPasswordEnter(login: String, password: String, loginEnter: String, passwordEnter: String): Boolean {
+    val result =
+        if ((login == loginEnter) && (password == passwordEnter)) {
+            println("Авторизация пройдена успешно!")
+            true
+        } else {
+            println("Вы неправильно ввели или логин или пароль. Введите снова:")
+            false
+        }
     return result
 }
 
-fun checkCode(code: String, codeEnter:String): Int {
+fun checkCode(code: String, codeEnter: String): Boolean {
     val result = if (code == codeEnter) {
         println("Ура. Вы наконец авторизовались!!!")
-        1
+        true
     } else {
-        0
+        false
     }
     return result
 }
