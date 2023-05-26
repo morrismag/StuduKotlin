@@ -1,13 +1,13 @@
 package lesson12
 
 class Day(
-    val idDay:Int,
+    val idDay: Int,
     val nameDay: String,
     val temperatureDay: String,
-    val temperatureNight:String,
+    val temperatureNight: String,
     val atmosphericPressure: Int,
     val rainIs: Boolean = false,
-){
+) {
 
     fun readInformation() {
         println("Информация о погоде\n$idDay")
@@ -19,34 +19,37 @@ class Day(
     }
 
 }
+
 fun main() {
     val mondayWeather =
-        Day(1,
+        Day(
+            1,
             "Понедельник",
             "24",
             "12",
-            730)
-
-
+            730
+        )
     val tuesdayWeather =
-        Day(2,
+        Day(
+            2,
             "Вторник",
             "22",
             "14",
             720,
-            true)
-
+            true
+        )
     val wednesdayWeather =
-        Day(3,
+        Day(
+            3,
             "Среда",
             "30",
             "10",
-            725)
+            725
+        )
 
     mondayWeather.readInformation()
     println()
     tuesdayWeather.readInformation()
     println()
     wednesdayWeather.readInformation()
-
 }
