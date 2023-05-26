@@ -1,6 +1,11 @@
 package lesson11
 
-// ... пока не разобрался как сделать правильно присоединенные подконтакты ...
+class SubContactUser(
+    val subId: Int,
+    val categoryUser: String,
+    val nameSubContact: String,
+    val telSubNumberSell: Long,
+)
 
 class Contact(
     val id: Int,
@@ -9,23 +14,26 @@ class Contact(
     val telNumberHome: Long,
     val accFaceTime: String,
     val iCloud: String,
-    var subContact: String,
-    var attachedContacts: Array<String> = arrayOf()
+    var attachedContacts: MutableList<SubContactUser>,
 ) {
-    fun writingSend() {
+    fun writingSend(): String {
         println("Эта функция для написания СМС")
+        return readln()
     }
 
-    fun telSell() {
-        println("Эта функция для звонка")
+    fun telSell(): Int {
+        println("Эта функция для звонка.  Введи номер телефона:")
+        return readln().toIntOrNull() ?: 0
     }
 
-    fun telVideoSell() {
-        println("Эта функция для видеозвонка")
+    fun telVideoSell(): String {
+        println("Эта функция для видеозвонка. Введи аккаунт:")
+        return readln()
     }
 
-    fun emailSend() {
-        println("Эта функция для отправке сообщения по e-mail")
+    fun emailSend(): String {
+        println("Эта функция для отправке сообщения по e-mai. Введи e-mail:")
+        return readln()
     }
 
     fun sellFaceTime() {
@@ -35,13 +43,24 @@ class Contact(
     fun sellVideoFaceTime() {
         println("Эта функция для видео по FaceTime")
     }
-
-    fun subContactLink() {
-        println("Эта функция должна подсоединять подконтакты в attachedContacts")
-    }
 }
 
 fun main() {
+    val subUserValeriy = SubContactUser(
+        1,
+        "подруга",
+        "Валерия",
+        89765436723,
+    )
+    val subUserSergei = SubContactUser(
+        1,
+        " друг",
+        "Сергей",
+        89754326723,
+    )
+
+    val listUser = mutableListOf(subUserValeriy, subUserSergei)
+
     val contact = Contact(
         1,
         "Max",
@@ -49,8 +68,7 @@ fun main() {
         89786543421,
         "Morris",
         "mo@mail.ru",
-        "муж",
-        arrayOf("жена", "Оля", "подруга", "Галя", " подруга", "Света"),
+        attachedContacts = listUser,
     )
 
     println(contact.id)
@@ -59,16 +77,15 @@ fun main() {
     println(contact.telNumberHome)
     println(contact.accFaceTime)
     println(contact.iCloud)
-    println(contact.subContact)
     for (i in contact.attachedContacts.indices) {
-        println(contact.attachedContacts[i])
+        println(contact.attachedContacts[i].nameSubContact)
+        println(contact.attachedContacts[i].categoryUser)
     }
 
-    contact.writingSend()
-    contact.telSell()
-    contact.telVideoSell()
-    contact.emailSend()
+    println(contact.writingSend())
+    println(contact.telSell())
+    println(contact.telVideoSell())
+    println(contact.emailSend())
     contact.sellFaceTime()
     contact.sellVideoFaceTime()
-    contact.subContactLink()
 }
