@@ -35,28 +35,29 @@ fun main() {
 }
 
 fun checkEnter(enter: String): Boolean {
-    val result = if (enter.length >= 4) {
+    return  if (enter.length >= 4) {
         println("Логин принят.")
         true
     } else {
         println("Значение меньше 4-х символов. Введите снова:")
         false
     }
-    return result
 }
 
 fun generationPassword(numberOfPassword: Int): String {
     val numPart = (1..9).toList()
     val randomChars = ('1'..'9') + ('a'..'z') + ('A'..'Z') +
-            (33..47).toList().map { it.toChar() }
-    val resultPassword: Array<String> = Array(numberOfPassword) { "" }
+            ('!'..'/')
+    var resultPassword = ""
 
-    for (i in 0 until numberOfPassword) {
-        if ((i % 2) != 0) {
-            resultPassword[i] = randomChars.random().toString()
-        } else resultPassword[i] = numPart.random().toString()
+    for (i in 1..numberOfPassword) {
+        val charPassword =
+            if ((i % 2) != 0) {
+                randomChars.random().toString()
+            } else numPart.random().toString()
+        resultPassword += charPassword
     }
-    return resultPassword.joinToString("")
+    return resultPassword
 }
 
 fun checkLoginPasswordEnter(login: String, password: String, loginEnter: String, passwordEnter: String): Boolean {
