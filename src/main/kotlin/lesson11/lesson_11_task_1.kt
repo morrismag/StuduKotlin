@@ -5,8 +5,7 @@ class User(
     val loginUser: String,
     val passwordUser: String,
     val emailUser: String,
-) {
-}
+)
 
 fun main() {
     val userSergey = User(
