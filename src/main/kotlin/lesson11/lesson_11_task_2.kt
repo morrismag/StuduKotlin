@@ -34,10 +34,8 @@ class User2(
         passwordUser = readln()
     }
 
-    fun sendEmail() {
-        println("Введите сообщение пользователю для отправки по e-mail:")
-        val sendString = readln()
-        println("Сообщение \n$sendString\nотправляем на почту $emailUser")
+    fun sendEmail(sendMassage: String) {
+        println("Сообщение \n$sendMassage\nотправляем на почту $emailUser")
     }
 }
 fun main() {
@@ -63,5 +61,7 @@ fun main() {
     firstUser.readInformation()
     firstUser.rePassword()
     firstUser.readInformation()
-    firstUser.sendEmail()
+    println("Введите сообщение пользователю для отправки по e-mail:")
+    val sendString = readln()
+    firstUser.sendEmail(sendString)
 }
