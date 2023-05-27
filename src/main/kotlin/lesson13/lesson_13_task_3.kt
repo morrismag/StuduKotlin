@@ -1,6 +1,6 @@
 package lesson13
 
-class UserTelephoneCompany(
+class UserCard(
     val userName: String,
     val telephoneNumber: Long,
     val companyName: String?,
@@ -10,29 +10,25 @@ class UserTelephoneCompany(
             "Имя: $userName\n" +
                     "Номер: $telephoneNumber\n" +
                     "Компания: " +
-                    "${
-                        if (companyName.isNullOrEmpty()) {
-                            "[не указано]"
-                        } else companyName
-                    }\n"
+                    "${companyName ?: "[не указано]"}\n"
         )
     }
 }
 
 fun main() {
-    val listUser = mutableListOf<UserTelephoneCompany>()
+    val listUser = mutableListOf<UserCard>()
 
-    val user1 = UserTelephoneCompany(
+    val user1 = UserCard(
         "Alex",
         89256789432,
         null
     )
-    val user2 = UserTelephoneCompany(
+    val user2 = UserCard(
         "Boris",
         89256659720,
         "LANIT"
     )
-    val user3 = UserTelephoneCompany(
+    val user3 = UserCard(
         "Alex",
         89016754589,
         "Yandex"
