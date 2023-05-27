@@ -10,11 +10,7 @@ class UserTelephone(
             "Имя: $userName\n" +
                     "Номер: $telephoneNumber\n" +
                     "Компания: " +
-                    "${
-                        if (companyName.isNullOrEmpty()) {
-                            "[не указано]"
-                        } else companyName
-                    }\n"
+                    "${companyName ?: "[не указано]"}\n"
         )
     }
 }
