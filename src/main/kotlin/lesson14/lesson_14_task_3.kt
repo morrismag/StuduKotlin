@@ -17,13 +17,13 @@ class CommentUser(
     message: String,
     val nameUser: String,
     val messageUser: String,
-) {
+): MessageAuthor(nameAuthor,message) {
     fun createAnswer(nameAuthor: String, messageAuthor: String, nameUser: String, messageUser: String) {
         println(
-            "{$nameUser}\n" +
-                    "     {$messageUser}\n" +
-                    "                   -$nameAuthor-\n" +
-                    "                   -$messageAuthor-}"
+            """{$nameUser}
+               {$messageUser}
+                             -$nameAuthor-
+                             -$messageAuthor-}"""
         )
     }
 }
