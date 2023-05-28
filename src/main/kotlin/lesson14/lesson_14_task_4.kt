@@ -4,7 +4,7 @@ open class CelestialBodies(
     val habitabilityIs: Boolean,
     val atmosphereIs: Boolean,
     val waterIs: Boolean,
-    val disembarkation: Boolean
+    val disembarkation: Boolean,
 )
 
 class Planet(
