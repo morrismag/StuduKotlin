@@ -1,7 +1,11 @@
 package lesson14
 
-// ... Заметил интересную вещь - произвольно вводить стороны треугольника не совсем
-// правильно. Формула площади по периоду перестает работать- она работает только до 90 градусов ...
+// ... Изначально я думал для создания resultList необхдимо одинаковое количество переменных
+// объявлять в дочерних классах, по этомк успользовал список параметров list на вводе
+// И в первом решении я выводил в цикле проверку накопительной суммы красных фигур
+// забыл ее удалить из конечного решения
+// Теперь буду знать, что формируя список class Figure все дочерние классы туда входят и не важно сколько
+// у них дополнительных параметров, главное что бы был параметр colorFigure: String...
 
 import kotlin.math.sqrt
 
@@ -13,48 +17,48 @@ abstract class Figure {
 
 class Circle(
     override val colorFigure: String,
-    val typeFigure: String,
-    val data: List<Int>,
+    val radius: Int,
 ) : Figure() {
     override fun perimeterFigure(): Double {
-        return 2 * 3.14 * data[0]
+        return 2 * 3.14 * radius
     }
 
     override fun squareFigure(): Double {
-        return 3.14 * data[0] * data[0]
+        return 3.14 * radius * radius
     }
 }
 
 class Rectangle(
     override val colorFigure: String,
-    val typeFigure: String,
-    val data: List<Int>,
+    val sideRectangleA: Int,
+    val sideRectangleB: Int,
 ) : Figure() {
     override fun perimeterFigure(): Double {
-        return (2 * (data[0] + data[1])).toDouble()
+        return (2 * (sideRectangleA + sideRectangleB)).toDouble()
     }
 
     override fun squareFigure(): Double {
-        return (data[0] * data[1]).toDouble()
+        return (sideRectangleA * sideRectangleB).toDouble()
     }
 }
 
 class Triangle(
     override val colorFigure: String,
-    val typeFigure: String,
-    val data: List<Int>,
+    val sideTriangleA: Int,
+    val sideTriangleB: Int,
+    val sideTriangleC: Int,
 ) : Figure() {
     override fun perimeterFigure(): Double {
-        return (data[0] + data[1] + data[2]).toDouble()
+        return (sideTriangleA + sideTriangleB + sideTriangleC).toDouble()
     }
 
     override fun squareFigure(): Double {
-        val poluPerimeter = (data[0] + data[1] + data[2]) / 2
+        val poluPerimeter = (sideTriangleA + sideTriangleB + sideTriangleC) / 2
         return sqrt(
             (poluPerimeter *
-                    (poluPerimeter - data[0]) *
-                    (poluPerimeter - data[1]) *
-                    (poluPerimeter - data[2])).toDouble()
+                    (poluPerimeter - sideTriangleA) *
+                    (poluPerimeter - sideTriangleB) *
+                    (poluPerimeter - sideTriangleC)).toDouble()
         )
 
     }
@@ -62,34 +66,34 @@ class Triangle(
 
 fun main() {
     val circle1 = Circle(
-        "красный",
-        "круг",
-        data = listOf(5)
+        colorFigure = COLOR_RED,
+        radius = 5
     )
     val circle2 = Circle(
-        "зеленый",
-        "круг",
-        data = listOf(8)
+        colorFigure = COLOR_GREEN,
+        radius = 8
     )
     val rectangle1 = Rectangle(
-        "красный",
-        "прямоугольник",
-        data = listOf(3, 6)
+        colorFigure = COLOR_RED,
+        sideRectangleA = 3,
+        sideRectangleB = 8,
     )
     val rectangle2 = Rectangle(
-        "черный",
-        "прямоугольник",
-        data = listOf(3, 6)
+        colorFigure = COLOR_BLACK,
+        sideRectangleA = 2,
+        sideRectangleB = 4,
     )
     val triangle1 = Triangle(
-        "красный",
-        "треугольник",
-        data = listOf(3, 4, 5)
+        colorFigure = COLOR_RED,
+        sideTriangleA = 3,
+        sideTriangleB = 4,
+        sideTriangleC = 5,
     )
     val triangle2 = Triangle(
-        "зеленый",
-        "треугольник",
-        data = listOf(3, 7, 5)
+        colorFigure = COLOR_GREEN,
+        sideTriangleA = 3,
+        sideTriangleB = 7,
+        sideTriangleC = 5,
     )
 
     val resultList = listOf(circle1, circle2, rectangle1, rectangle2, triangle1, triangle2)
@@ -102,7 +106,6 @@ fun sumPerimeterFigure(list: List<Figure>) {
     for (i in list.indices) {
         if (list[i].colorFigure == "красный") {
             sum += list[i].perimeterFigure()
-            println(sum)
         }
     }
     println("Сумма периметров красных фигур равна $sum")
@@ -113,8 +116,11 @@ fun sumSquareFigure(list: List<Figure>) {
     for (i in list.indices) {
         if (list[i].colorFigure == "красный") {
             sum += list[i].squareFigure()
-            println(sum)
         }
     }
     println("Сумма площадей красных фигур равна $sum")
 }
+
+const val COLOR_RED = "красный"
+const val COLOR_GREEN = "зеленый"
+const val COLOR_BLACK = "черный"
