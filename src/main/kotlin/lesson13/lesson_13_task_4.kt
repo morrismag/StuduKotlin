@@ -7,19 +7,9 @@ class UserInDirectory(
 ) {
     fun readInformationAboutUser() {
         println(
-            "Имя: " +
-                    "${
-                        if (userName.isNullOrEmpty()) {
-                            null
-                        } else userName
-                    }\n" +
-                    "Номер: $telephoneNumber\n" +
-                    "Компания: " +
-                    "${
-                        if (companyName.isNullOrEmpty()) {
-                            null
-                        } else companyName
-                    }\n"
+            "Имя: $userName\n" +
+            "Номер: $telephoneNumber\n" +
+            "Компания: ${companyName ?: "[не указано]"}\n"
         )
     }
 }
@@ -41,8 +31,10 @@ fun main() {
         answerUser = readln()
     }
 
-    for (i in 0 until listUser.size) {
-        listUser[i].readInformationAboutUser()
+    val listUserFilter = listUser.filter { it.telephoneNumber.toInt() != 0 }
+
+    for (i in listUserFilter.indices) {
+        listUserFilter[i].readInformationAboutUser()
     }
 }
 
@@ -50,16 +42,9 @@ fun addUser(): UserInDirectory {
     println("Введите имя аббонента:")
     val userName = readln()
     println("Введите номер телефона:")
-    var userTelephone = readln().toLongOrNull() ?: 0
-
-    while (userTelephone.toInt() == 0) {
-        println("Вы не ввели номер телефона. Повторите ввод:")
-        userTelephone = readln().toLongOrNull() ?: 0
-    }
-
+    val userTelephone = readln().toLongOrNull() ?: 0
     println("Введите компанию абонента")
     val userCompany = readln()
-
     return UserInDirectory(
         userName,
         userTelephone,
