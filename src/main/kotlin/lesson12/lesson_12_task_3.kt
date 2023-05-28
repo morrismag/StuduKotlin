@@ -1,6 +1,6 @@
 package lesson12
 
-class Day(
+class Day1(
     val idDay: Int,
     val nameDay: String,
     val temperatureDay: String,
@@ -22,7 +22,7 @@ class Day(
 
 fun main() {
     val mondayWeather =
-        Day(
+        Day1(
             1,
             "Понедельник",
             "24",
@@ -30,7 +30,7 @@ fun main() {
             730
         )
     val tuesdayWeather =
-        Day(
+        Day1(
             2,
             "Вторник",
             "22",
@@ -39,7 +39,7 @@ fun main() {
             true
         )
     val wednesdayWeather =
-        Day(
+        Day1(
             3,
             "Среда",
             "30",

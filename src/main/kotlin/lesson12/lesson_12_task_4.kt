@@ -1,6 +1,6 @@
 package lesson12
 
-class Day(
+class Day2(
     val idDay: Int,
     val nameDay: String,
     val temperatureDay: String,
@@ -28,14 +28,14 @@ class Day(
 }
 
 fun main() {
-    Day(
+    Day2(
         1,
         "Понедельник",
         "24",
         "12",
         730
     )
-    Day(
+    Day2(
         2,
         "Вторник",
         "22",
@@ -43,7 +43,7 @@ fun main() {
         720,
         true
     )
-    Day(
+    Day2(
         3,
         "Среда",
         "30",
