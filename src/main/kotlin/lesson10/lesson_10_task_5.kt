@@ -1,5 +1,6 @@
 package lesson10
 
+//  ... да действительно можно подсократить - возьму на заметку ...
 fun main() {
     println("Для регистрации придумайте логин не менее 4-х символов:")
     var loginUser = readln()
@@ -34,20 +35,18 @@ fun main() {
     }
 }
 
-fun checkEnter(enter: String): Boolean {
-    return  if (enter.length >= 4) {
+fun checkEnter(enter: String): Boolean =
+    if (enter.length >= 4) {
         println("Логин принят.")
         true
     } else {
         println("Значение меньше 4-х символов. Введите снова:")
         false
     }
-}
 
 fun generationPassword(numberOfPassword: Int): String {
     val numPart = (1..9).toList()
-    val randomChars = ('1'..'9') + ('a'..'z') + ('A'..'Z') +
-            ('!'..'/')
+    val randomChars = ('1'..'9') + ('a'..'z') + ('A'..'Z') + ('!'..'/')
     var resultPassword = ""
 
     for (i in 1..numberOfPassword) {
@@ -60,24 +59,19 @@ fun generationPassword(numberOfPassword: Int): String {
     return resultPassword
 }
 
-fun checkLoginPasswordEnter(login: String, password: String, loginEnter: String, passwordEnter: String): Boolean {
-    val result =
-        if ((login == loginEnter) && (password == passwordEnter)) {
-            println("Авторизация пройдена успешно!")
-            true
-        } else {
-            println("Вы неправильно ввели или логин или пароль. Введите снова:")
-            false
-        }
-    return result
-}
+fun checkLoginPasswordEnter(login: String, password: String, loginEnter: String, passwordEnter: String): Boolean =
+    if ((login == loginEnter) && (password == passwordEnter)) {
+        println("Авторизация пройдена успешно!")
+        true
+    } else {
+        println("Вы неправильно ввели или логин или пароль. Введите снова:")
+        false
+    }
 
-fun checkCode(code: String, codeEnter: String): Boolean {
-    val result = if (code == codeEnter) {
+fun checkCode(code: String, codeEnter: String): Boolean =
+    if (code == codeEnter) {
         println("Ура. Вы наконец авторизовались!!!")
         true
     } else {
         false
     }
-    return result
-}
