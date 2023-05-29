@@ -2,7 +2,7 @@ package lesson16
 
 class Order {
     private val idOrder: Int = 0
-    var statusOrder: String = "Не обработан"
+    private var statusOrder: String = "Не обработан"
 
     private fun changeStatus(inputChange: String) {
         statusOrder = inputChange
@@ -13,10 +13,14 @@ class Order {
         val inputChange = readln()
         changeStatus(inputChange)
     }
+
+    fun viewingStatus() {
+        println("Статус заказа изменен на $statusOrder")
+    }
 }
 
 fun main() {
     val order = Order()
     order.inputStatusMassage()
-    println("Статус заказа изменен на ${order.statusOrder}")
+    order.viewingStatus()
 }
