@@ -1,18 +1,20 @@
 package lesson16
 
+import kotlin.math.pow
+
 class Circle() {
-    private var radius: Int = 0
+    private var radius: Double = 0.0
 
     fun setRadius(inputRadius: Int) {
-        radius = inputRadius
+        radius = inputRadius.toDouble()
     }
 
-    fun perimeter() {
+    fun perimeterCircle() {
         println("Периметр круга равен ${2 * PI * radius}")
     }
 
-    fun square() {
-        println("Площадь круга равен ${PI * radius * radius}")
+    fun squareCircle() {
+        println("Площадь круга равен ${PI * radius.pow(2.0)}")
     }
 }
 
@@ -21,8 +23,8 @@ fun main() {
     println("Введи радиус:")
     val inputRadius = readln().toIntOrNull() ?: 0
     circle.setRadius(inputRadius)
-    circle.perimeter()
-    circle.square()
+    circle.perimeterCircle()
+    circle.squareCircle()
 }
 
 const val PI = 3.14
