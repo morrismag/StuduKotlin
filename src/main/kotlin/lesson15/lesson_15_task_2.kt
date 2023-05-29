@@ -22,7 +22,6 @@ class MassageTemperature() : WeatherControlStation() {
 class MassagePrecipitationAmount : WeatherControlStation() {
     override val baseMassage: String = "13 мм"
 
-
     override fun connectToServer() {
         println("Подсоединился к серверу")
     }
