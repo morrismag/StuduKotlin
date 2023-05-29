@@ -1,12 +1,5 @@
 package lesson14
 
-// ... Изначально я думал для создания resultList необхдимо одинаковое количество переменных
-// объявлять в дочерних классах, по этомк успользовал список параметров list на вводе
-// И в первом решении я выводил в цикле проверку накопительной суммы красных фигур
-// забыл ее удалить из конечного решения
-// Теперь буду знать, что формируя список class Figure все дочерние классы туда входят и не важно сколько
-// у них дополнительных параметров, главное что бы был параметр colorFigure: String...
-
 import kotlin.math.sqrt
 
 abstract class Figure {
@@ -20,11 +13,11 @@ class Circle(
     val radius: Int,
 ) : Figure() {
     override fun perimeterFigure(): Double {
-        return 2 * 3.14 * radius
+        return 2 * kotlin.math.PI * radius
     }
 
     override fun squareFigure(): Double {
-        return 3.14 * radius * radius
+        return kotlin.math.PI * radius * radius
     }
 }
 
@@ -104,7 +97,7 @@ fun main() {
 fun sumPerimeterFigure(list: List<Figure>) {
     var sum = 0.0
     for (i in list.indices) {
-        if (list[i].colorFigure == "красный") {
+        if (list[i].colorFigure == COLOR_RED) {
             sum += list[i].perimeterFigure()
         }
     }
@@ -114,7 +107,7 @@ fun sumPerimeterFigure(list: List<Figure>) {
 fun sumSquareFigure(list: List<Figure>) {
     var sum = 0.0
     for (i in list.indices) {
-        if (list[i].colorFigure == "красный") {
+        if (list[i].colorFigure == COLOR_RED) {
             sum += list[i].squareFigure()
         }
     }
