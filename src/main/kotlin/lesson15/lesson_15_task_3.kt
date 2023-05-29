@@ -1,13 +1,13 @@
 package lesson15
 
-abstract class AllUsers {
+abstract class BaseUser {
     abstract val user: String
 
     abstract fun readMassage()
     abstract fun writeMassage()
 }
 
-class User(override val user: String) : AllUsers() {
+class User(override val user: String) : BaseUser() {
 
     override fun readMassage() {
         println("Я $user читаю сообщения")
@@ -18,7 +18,7 @@ class User(override val user: String) : AllUsers() {
     }
 }
 
-class Administrator(override val user: String) : AllUsers() {
+class Administrator(override val user: String) : BaseUser() {
     override fun readMassage() {
         println("Я $user читаю сообщения")
     }
