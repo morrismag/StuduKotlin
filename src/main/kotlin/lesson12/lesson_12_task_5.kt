@@ -1,6 +1,6 @@
 package lesson12
 
-class Day(
+class Day15(
     var idDay: Int,
     var temperatureDay: Int,
     var temperatureNight: Int,
@@ -17,7 +17,7 @@ class Day(
 }
 
 fun main() {
-    val daysList: List<Day> = List(10) { createDay() }
+    val daysList: List<Day15> = List(10) { createDay() }
 
     val averageTemperInDay = createDayTemperInDay(daysList).average()
     val averageTemperInNight = createDayTemperInNight(daysList).average()
@@ -30,8 +30,8 @@ fun main() {
     println("Сумма дождливых дней: $sumRainDays")
 }
 
-fun createDay(): Day {
-    return Day(
+fun createDay(): Day15 {
+    return Day15(
         idDay = (1..10).random(),
         temperatureDay = (10..30).random(),
         temperatureNight = (10..30).random(),
@@ -49,7 +49,7 @@ fun rainBooleanToInt(inputBoolean: Boolean): Int {
     return if (inputBoolean) 1 else 0
 }
 
-fun createDayTemperInDay(list: List<Day>): MutableList<Int> {
+fun createDayTemperInDay(list: List<Day15>): MutableList<Int> {
     var listT: MutableList<Int> = mutableListOf()
     for (i in list.indices) {
         listT = mutableListOf(list[i].temperatureDay)
@@ -57,7 +57,7 @@ fun createDayTemperInDay(list: List<Day>): MutableList<Int> {
     return listT
 }
 
-fun createDayTemperInNight(list: List<Day>): MutableList<Int> {
+fun createDayTemperInNight(list: List<Day15>): MutableList<Int> {
     var listT: MutableList<Int> = mutableListOf()
     for (i in list.indices) {
         listT = mutableListOf(list[i].temperatureNight)
@@ -65,7 +65,7 @@ fun createDayTemperInNight(list: List<Day>): MutableList<Int> {
     return listT
 }
 
-fun createDayAtmosphericPressure(list: List<Day>): MutableList<Int> {
+fun createDayAtmosphericPressure(list: List<Day15>): MutableList<Int> {
     var listT: MutableList<Int> = mutableListOf()
     for (i in list.indices) {
         listT = mutableListOf(list[i].atmosphericPressure)

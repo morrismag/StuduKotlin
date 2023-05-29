@@ -1,6 +1,6 @@
 package lesson13
 
-class UserTelephone(
+class UserTelephone1(
     val userName: String,
     val telephoneNumber: Long,
     val companyName: String?,
@@ -16,7 +16,7 @@ class UserTelephone(
 }
 
 fun main() {
-    val firstUser = UserTelephone(
+    val firstUser = UserTelephone1(
         "Alex",
         89256789432,
         null
