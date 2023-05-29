@@ -1,13 +1,14 @@
 package lesson16
 
-class NumberOfCub{
-    private val numberCub = (1..6).random()
+class NumberOfCube {
+    private val numberCube = (1..6).random()
 
-    fun takeNumberOfCub(){
-        println("Выпало число $numberCub")
+    fun printNumberOfCube() {
+        println("Выпало число $numberCube")
     }
 }
+
 fun main() {
-    val numberOfCub = NumberOfCub()
-    numberOfCub.takeNumberOfCub()
+    val numberOfCub = NumberOfCube()
+    numberOfCub.printNumberOfCube()
 }
