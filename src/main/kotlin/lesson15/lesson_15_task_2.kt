@@ -1,33 +1,33 @@
 package lesson15
 
 abstract class WeatherControlStation {
-    abstract val baseMassage: String
+    abstract val baseMessage: String
 
     abstract fun connectToServer()
-    abstract fun sendMassage()
+    abstract fun sendMessage()
 }
 
 class MassageTemperature() : WeatherControlStation() {
 
-    override val baseMassage: String = "16 градусов Цельсия"
+    override val baseMessage: String = "16 градусов Цельсия"
     override fun connectToServer() {
         println("Подсоединился к серверу")
     }
 
-    override fun sendMassage() {
-        println("Сегодня температура воздуха: $baseMassage")
+    override fun sendMessage() {
+        println("Сегодня температура воздуха: $baseMessage")
     }
 }
 
 class MassagePrecipitationAmount : WeatherControlStation() {
-    override val baseMassage: String = "13 мм"
+    override val baseMessage: String = "13 мм"
 
     override fun connectToServer() {
         println("Подсоединился к серверу")
     }
 
-    override fun sendMassage() {
-        println("Сегодня количество осадков: $baseMassage")
+    override fun sendMessage() {
+        println("Сегодня количество осадков: $baseMessage")
     }
 }
 
@@ -35,9 +35,9 @@ fun main() {
     val temperatureMassage = MassageTemperature()
     val precipitationAmountMassage = MassagePrecipitationAmount()
 
-    println(temperatureMassage.connectToServer())
-    println(temperatureMassage.sendMassage())
+    temperatureMassage.connectToServer()
+    temperatureMassage.sendMessage()
     println()
-    println(precipitationAmountMassage.connectToServer())
-    println(precipitationAmountMassage.sendMassage())
+    precipitationAmountMassage.connectToServer()
+    precipitationAmountMassage.sendMessage()
 }
