@@ -37,12 +37,12 @@ class Rectangle(
 
 class Triangle(
     override val colorFigure: String,
-    val sideTriangleA: Int,
-    val sideTriangleB: Int,
-    val sideTriangleC: Int,
+    val sideTriangleA: Double,
+    val sideTriangleB: Double,
+    val sideTriangleC: Double,
 ) : Figure() {
     override fun perimeterFigure(): Double {
-        return (sideTriangleA + sideTriangleB + sideTriangleC).toDouble()
+        return (sideTriangleA + sideTriangleB + sideTriangleC)
     }
 
     override fun squareFigure(): Double {
@@ -51,7 +51,7 @@ class Triangle(
             (poluPerimeter *
                     (poluPerimeter - sideTriangleA) *
                     (poluPerimeter - sideTriangleB) *
-                    (poluPerimeter - sideTriangleC)).toDouble()
+                    (poluPerimeter - sideTriangleC))
         )
 
     }
@@ -78,15 +78,15 @@ fun main() {
     )
     val triangle1 = Triangle(
         colorFigure = COLOR_RED,
-        sideTriangleA = 3,
-        sideTriangleB = 4,
-        sideTriangleC = 5,
+        sideTriangleA = 3.0,
+        sideTriangleB = 4.0,
+        sideTriangleC = 5.0,
     )
     val triangle2 = Triangle(
         colorFigure = COLOR_GREEN,
-        sideTriangleA = 3,
-        sideTriangleB = 7,
-        sideTriangleC = 5,
+        sideTriangleA = 3.0,
+        sideTriangleB = 7.0,
+        sideTriangleC = 5.0,
     )
 
     val resultList = listOf(circle1, circle2, rectangle1, rectangle2, triangle1, triangle2)
