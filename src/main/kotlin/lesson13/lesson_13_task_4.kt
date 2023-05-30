@@ -2,7 +2,7 @@ package lesson13
 
 class UserInDirectory(
     val userName: String?,
-    val telephoneNumber: Long,
+    val telephoneNumber: Int,
     val companyName: String?,
 ) {
     fun readInformationAboutUser() {
@@ -18,38 +18,50 @@ fun main() {
 
     println("Новый аббонент")
     val listUser = mutableListOf<UserInDirectory>()
-    var result = addUser()
-    if (result != null) listUser.add(result)
+    createUser().let { listUser.add(it) }
 
     println("Вы хотите ввести нового абонента:")
     var answerUser = readln()
 
     while (answerUser == "да") {
-        result = addUser()
-        if (result != null) listUser.add(result)
+        createUser().let { listUser.add(it) }
         println("Вы хотите ввести нового абонента:")
         answerUser = readln()
     }
 
-    val listUserFilter = listUser.filter { it.telephoneNumber.toInt() != 0 }
 
-    for (i in listUserFilter.indices) {
-        listUserFilter[i].readInformationAboutUser()
+    for (i in listUser.indices) {
+        listUser[i].readInformationAboutUser()
     }
 }
 
-fun addUser(): UserInDirectory? {
+fun createUser(): UserInDirectory {
+    var userName: String
+    var userTelephone: Int
+    var userCompany: String
     println("Введите имя аббонента:")
-    val userName = readln()
+    userName = readln()
+    if (userName == "") userName = "null"
     println("Введите номер телефона:")
-    val userTelephone = readln().toLongOrNull() ?: 0
+    userTelephone = (readln().toLongOrNull() ?: 0).toInt()
     println("Введите компанию абонента")
-    val userCompany = readln()
-    return if (userTelephone.toInt() != 0) {
-        UserInDirectory(
-            userName,
-            userTelephone,
-            userCompany
-        )
-    } else null
+    userCompany = readln()
+    if (userCompany == "") userCompany = "null"
+
+    while (userTelephone == 0) {
+        println("Ты не ввел номер телефона, повторить добавление контакта.")
+        println("Введите имя аббонента:")
+        userName = readln()
+        if (userName == "") userName = "null"
+        println("Введите номер телефона:")
+        userTelephone = (readln().toLongOrNull() ?: 0).toInt()
+        println("Введите компанию абонента")
+        userCompany = readln()
+        if (userCompany == "") userCompany = "null"
+    }
+    return UserInDirectory(
+        userName,
+        userTelephone,
+        userCompany
+    )
 }
