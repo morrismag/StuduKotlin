@@ -1,8 +1,9 @@
 package lesson15
 
-// ...  Иван не понял задание . Тут вначале нужно решить какая последовательность доставки туда сюда машин,
-// т.е. решить загадку на логику,
-// а потом написание процедур или просто написать что отправка одной грузовой и 2-х легковых машин?...
+interface Moveable {
+    fun moveCar()
+}
+
 interface CargoTransport {
     fun cargo(): Int
 }
@@ -11,14 +12,15 @@ interface PassengerTransport {
     fun passenger(): Int
 }
 
-abstract class Cars : CargoTransport, PassengerTransport {
-    abstract val name: String
-}
 
-class Truck(override val name: String) : Cars() {
+class Truck(val name: String) : Moveable, CargoTransport, PassengerTransport {
     override fun cargo(): Int {
         val cargo = 2
         return cargo
+    }
+
+    override fun moveCar() {
+        println("Поехал грузовик $name")
     }
 
     override fun passenger(): Int {
@@ -27,15 +29,15 @@ class Truck(override val name: String) : Cars() {
     }
 }
 
-class PassengerCar(override val name: String) : Cars() {
-    override fun cargo(): Int {
-        val cargo = 0
-        return cargo
-    }
+class PassengerCar(val name: String) : Moveable, PassengerTransport {
 
     override fun passenger(): Int {
         val people = 3
         return people
+    }
+
+    override fun moveCar() {
+        println("Поехала легковая машина $name")
     }
 }
 
@@ -48,10 +50,12 @@ fun main() {
     val truck1 = Truck("Грузовик")
     val passCar = PassengerCar("Волга")
 
+    println("${truck1.moveCar()}")
     println(
-        "Для перевозки ${truck1.cargo()} тонн, необходимо один рейс ${truck1.name}" +
-                " и выкинуть попутчика на пол пути."
+        "Для перевозки ${truck1.cargo()} тонн, необходимо один рейс ${truck1.name}\n" +
+                "А если перевезти 6 чеовек то нужно ${truck1.passenger() * 6} рейсов ${truck1.name}"
     )
-    println("Для перевозки ${passCar.passenger()} человек, необходимо две машины ${passCar.name}." +
-            "И не подбирать попутчика из грузовой машины)))")
+    println()
+    println("${passCar.moveCar()}")
+    println("Для перевозки ${passCar.passenger() * 2} человек, необходимо 2 машины ${passCar.name}.")
 }
