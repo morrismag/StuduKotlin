@@ -9,13 +9,18 @@ class Product(
         println(
             "ID товара: $id\n" +
                     "Название товара: $nameProduct\n" +
-                    when (categoryProduct) {
-                        CategoryProduct.WEAR.id -> CategoryProduct.WEAR.nameCategory()
-                        CategoryProduct.OFFICE_SUPPLIES.id -> CategoryProduct.OFFICE_SUPPLIES.nameCategory()
-                        CategoryProduct.OTHER.id -> CategoryProduct.OTHER.nameCategory()
-                        else -> "Опаньки. Что то новое!"
-                    }
+                    formedCategory(categoryProduct)
         )
+    }
+
+    fun formedCategory(categoryProduct: Int): String {
+
+        return when (categoryProduct) {
+            CategoryProduct.WEAR.id -> CategoryProduct.WEAR.nameCategory()
+            CategoryProduct.OFFICE_SUPPLIES.id -> CategoryProduct.OFFICE_SUPPLIES.nameCategory()
+            CategoryProduct.OTHER.id -> CategoryProduct.OTHER.nameCategory()
+            else -> "Опаньки. Что то новое!"
+        }
     }
 }
 
