@@ -1,14 +1,14 @@
 package lesson17
 
-class User {
-    var loginUser: String = "Max"
+class User(loginUser: String, passwordUser: String) {
+    var loginUser: String = ""
         set(value) {
             field = value
             println("Успешная смена логина на \"$field\"!")
         }
-    var passwordUser: String = "qwerty"
+    var passwordUser: String = ""
         set(value) {
-            if (value != field) println("Вы не можете сменить пароль!")
+            println("Вы не можете сменить пароль!")
         }
         get() {
             field = field.replace(Regex(".(?<=.)"), "*")
@@ -17,7 +17,7 @@ class User {
 }
 
 fun main() {
-    val userTest = User()
+    val userTest = User("qwe", "qwerty")
     println("Смени логин:")
     userTest.loginUser = readln()
     println("Смени пароль:")
