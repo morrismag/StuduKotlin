@@ -1,7 +1,7 @@
 package lesson18
 
-open class Product {
-    open fun getOrder() = ""
+abstract class Product {
+    abstract fun getOrder():String
 }
 
 class OneProductInOrder(
