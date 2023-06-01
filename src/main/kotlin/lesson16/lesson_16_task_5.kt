@@ -1,11 +1,10 @@
 package lesson16
 
+
 class Gamer(
     val nameGamer: String,        // имя игрока
-    private var health: Int,              // здоровье игрока
+    private var health: Int,      // здоровье игрока
     var impactForce: Int,        // сила удара игрока
-    var damage: Int,             // урон, нанесенный игроку
-    var takeHealth: Int,          // хилинг
 ) {
 
     fun startGame() {
@@ -18,12 +17,11 @@ class Gamer(
     }
 
     fun takeDamage() {
+        val damage = 50
         println("Ты нанес удар Игроку $nameGamer равный $damage hp")
         health -= damage
-        if (health <= 0) {
-            deathGamer()
-            takeHealth = 0
-        } else println(
+        if (health <= 0) deathGamer()
+        else println(
             "Игрок: $nameGamer\n" +
                     "Здоровье: $health\n" +
                     "Сила удара:$impactForce"
@@ -31,7 +29,9 @@ class Gamer(
     }
 
     fun treatment() {
+        var takeHealth = 10
         println("Ты подлечил Игрока $nameGamer на $takeHealth hp")
+        if (health <= 0) takeHealth = 0
         health += takeHealth
         println(
             "Игрок: $nameGamer\n" +
@@ -57,8 +57,6 @@ fun main() {
         "Валера",
         100,
         30,
-        50,
-        10,
     )
 
     gamer.startGame()
@@ -76,5 +74,5 @@ fun main() {
     gamer.takeDamage()
     println()
     Thread.sleep(4000)
-    gamer.treatment()
+    gamer.treatment()               // Это проверка на невозможность лечения после смерти (условие).
 }
