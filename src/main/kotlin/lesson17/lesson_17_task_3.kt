@@ -1,16 +1,12 @@
 package lesson17
 
-import lesson10.selectTheResult
-
-class Folder() {
+class Folder {
     var quantityFiles: Int = 0
     var accessFlag: Boolean = false
     var nameFolder: String = ""
         get() {
-            if (accessFlag == true) {
-                quantityFiles = 0
-                println("Cкрытая папка $field.\nКол-во файлов $quantityFiles")
-            } else {
+            if (accessFlag == true) println("Cкрытая папка $field.\nКол-во файлов 0")
+            else {
                 println("Папка $field.\nКол-во файлов $quantityFiles")
             }
             return field
