@@ -1,17 +1,18 @@
 package lesson17
 
-class Ship() {
-    var nameShip: String = "Звездный"
+class Ship(
+    nameShip: String,
+    val averageSpeed: Int,
+    val portDislocate: String
+) {
+    var nameShip: String = ""
         set(value) {
-            if (value != field) println("Нельзя менять название корабля!")
+            println("Нельзя менять название корабля!")
         }
-    val averageSpeed: Int = 30
-    val portDislocate: String = "Южный"
-
 }
 
 fun main() {
-    val shipZvevdniy = Ship()
+    val shipZvevdniy = Ship("Звездный", 30, "Moon")
     println("Введи имя корабля:")
     shipZvevdniy.nameShip = readln()
 }
