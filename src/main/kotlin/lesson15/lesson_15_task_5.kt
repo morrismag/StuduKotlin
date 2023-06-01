@@ -5,35 +5,32 @@ interface Moveable {
 }
 
 interface CargoTransport {
-    fun cargo(): Int
+    fun transportCargo()
 }
 
 interface PassengerTransport {
-    fun passenger(): Int
+    fun transportPassenger()
 }
 
-
-class Truck(val name: String) : Moveable, CargoTransport, PassengerTransport {
-    override fun cargo(): Int {
-        val cargo = 2
-        return cargo
+class Truck(val name: String, val cargo: Int, val people: Int) : Moveable, CargoTransport, PassengerTransport {
+    override fun transportCargo() {
+        println("Вес груза = $cargo")
     }
 
     override fun moveCar() {
         println("Поехал грузовик $name")
     }
 
-    override fun passenger(): Int {
-        val people = 1
-        return people
+    override fun transportPassenger() {
+        println("Пассажиров = $people")
     }
+
 }
 
-class PassengerCar(val name: String) : Moveable, PassengerTransport {
+class PassengerCar(val name: String, val people: Int) : Moveable, PassengerTransport {
 
-    override fun passenger(): Int {
-        val people = 3
-        return people
+    override fun transportPassenger() {
+        println("Пассажиров = $people")
     }
 
     override fun moveCar() {
@@ -47,15 +44,16 @@ fun main() {
                 "Один грузовик может перевести 2 тонны груза и 1-го пассажира\n" +
                 "Легковая машина может перевести 3-х пассажиров\n"
     )
-    val truck1 = Truck("Грузовик")
-    val passCar = PassengerCar("Волга")
+    val truck1 = Truck("Грузовик", 2, 1)
+    val passCar = PassengerCar("Волга", 3)
 
-    println("${truck1.moveCar()}")
-    println(
-        "Для перевозки ${truck1.cargo()} тонн, необходимо один рейс ${truck1.name}\n" +
-                "А если перевезти 6 чеовек то нужно ${truck1.passenger() * 6} рейсов ${truck1.name}"
-    )
+    truck1.moveCar()
+    truck1.transportCargo()
+    println("Нужен 1 рейс")
+    truck1.transportPassenger()
+    println("Нужено 6 рейсов")
     println()
-    println("${passCar.moveCar()}")
-    println("Для перевозки ${passCar.passenger() * 2} человек, необходимо 2 машины ${passCar.name}.")
+    passCar.moveCar()
+    passCar.transportPassenger()
+    println("Нужено 2 рейса")
 }
