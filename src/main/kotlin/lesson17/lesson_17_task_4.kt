@@ -7,7 +7,7 @@ class TravelBox {
         }
     var placeTravel: String = ""
         set(value) {
-            counterTravel = +1
+            if (value != field) counterTravel += 1
             field = value
         }
     var counterTravel: Int = 0
