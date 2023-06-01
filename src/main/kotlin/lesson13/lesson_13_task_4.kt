@@ -9,7 +9,7 @@ class UserInDirectory(
         println(
             "Имя: $userName\n" +
                     "Номер: $telephoneNumber\n" +
-                    "Компания: ${companyName ?: "[не указано]"}\n"
+                    "Компания: $companyName\n"
         )
     }
 }
@@ -29,36 +29,37 @@ fun main() {
         answerUser = readln()
     }
 
-
     for (i in listUser.indices) {
         listUser[i].readInformationAboutUser()
     }
 }
 
 fun createUser(): UserInDirectory {
-    var userName: String
+    var userName: String?
     var userTelephone: Int
-    var userCompany: String
+    var userCompany: String?
+
     println("Введите имя аббонента:")
     userName = readln()
-    if (userName == "") userName = "null"
+    if (userName.isEmpty()) userName = null
     println("Введите номер телефона:")
-    userTelephone = (readln().toLongOrNull() ?: 0).toInt()
+    userTelephone = readln().toIntOrNull() ?: 0
     println("Введите компанию абонента")
     userCompany = readln()
-    if (userCompany == "") userCompany = "null"
+    if (userCompany.isEmpty()) userCompany = null
 
     while (userTelephone == 0) {
         println("Ты не ввел номер телефона, повторить добавление контакта.")
         println("Введите имя аббонента:")
         userName = readln()
-        if (userName == "") userName = "null"
+        if (userName.isEmpty()) userName = null
         println("Введите номер телефона:")
-        userTelephone = (readln().toLongOrNull() ?: 0).toInt()
+        userTelephone = readln().toIntOrNull() ?: 0
         println("Введите компанию абонента")
         userCompany = readln()
-        if (userCompany == "") userCompany = "null"
+        if (userCompany.isEmpty()) userCompany = null
     }
+
     return UserInDirectory(
         userName,
         userTelephone,
