@@ -1,38 +1,27 @@
 package lesson18
 
-abstract class Screen {
-    abstract fun drawPoint()
-    abstract fun drawCircle()
-    abstract fun drawRectangle()
+abstract class AbstractFigure(nameFigure: String) {
+    abstract fun drawFigure()
+
 }
 
 class Point(
     val nameFigure: String = "Точка",
-) : Screen() {
-    override fun drawPoint() {
+) : AbstractFigure(nameFigure) {
+    override fun drawFigure() {
         println("Введи координату X:")
         val coordinateX = readln().toFloatOrNull() ?: 0
         println("Введи координату Y:")
         val coordinateY = readln().toFloatOrNull() ?: 0
         println("Функция рисует фигуру \"$nameFigure\" с координатами ($coordinateX,$coordinateY)")
     }
-
-    override fun drawCircle() {
-
-    }
-
-    override fun drawRectangle() {
-
-    }
 }
 
 class Circle(
     val nameFigure: String = "Круг",
-) : Screen() {
-    override fun drawPoint() {
-    }
+) : AbstractFigure(nameFigure) {
 
-    override fun drawCircle() {
+    override fun drawFigure() {
         println("Введи координату X:")
         val coordinateX = readln().toFloatOrNull() ?: 0
         println("Введи координату Y:")
@@ -44,22 +33,12 @@ class Circle(
                     "с центром ($coordinateX,$coordinateY) и радиусом $radiusCircle"
         )
     }
-
-    override fun drawRectangle() {
-
-    }
 }
 
 class Rectangle(
     val nameFigure: String = "Прямоугольник",
-) : Screen() {
-    override fun drawPoint() {
-    }
-
-    override fun drawCircle() {
-    }
-
-    override fun drawRectangle() {
+) : AbstractFigure(nameFigure) {
+    override fun drawFigure() {
         println("Введи координату X:")
         val coordinateX = readln().toFloatOrNull() ?: 0
         println("Введи координату Y:")
@@ -73,16 +52,30 @@ class Rectangle(
     }
 }
 
+class Screen {
+    fun drawFigure(figure: AbstractFigure) {
+        when (figure) {
+            is Point -> figure.drawFigure()
+            is Circle -> figure.drawFigure()
+            is Rectangle -> figure.drawFigure()
+            else -> println("Ты не выбрал ни одну фигуру")
+        }
+    }
+}
+
+
 fun main() {
     val pointTest = Point()
     val circleTest = Circle()
     val rectangleTest = Rectangle()
+    val screenTest = Screen()
 
     println("Выбери и напиши, какую фигуру нарисовать:\nТочка, Круг, Прямоугольник")
+
     when (readln()) {
-        "Точка" -> pointTest.drawPoint()
-        "Круг" -> circleTest.drawCircle()
-        "Прямоугольник" -> rectangleTest.drawRectangle()
+        "Точка" -> screenTest.drawFigure(pointTest)
+        "Круг" -> screenTest.drawFigure(circleTest)
+        "Прямоугольник" -> screenTest.drawFigure(rectangleTest)
         else -> println("Ты не выбрал ни одну фигуру")
     }
 }
