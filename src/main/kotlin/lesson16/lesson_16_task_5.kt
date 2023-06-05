@@ -16,8 +16,7 @@ class Gamer(
         )
     }
 
-    fun takeDamage() {
-        val damage = 50
+    fun takeDamage(damage: Int) {
         println("Ты нанес удар Игроку $nameGamer равный $damage hp")
         health -= damage
         if (health <= 0) deathGamer()
@@ -62,17 +61,15 @@ fun main() {
     gamer.startGame()
     println()
     Thread.sleep(4000)
-    gamer.takeDamage()
+    gamer.takeDamage(20)
     println()
     Thread.sleep(4000)
     gamer.treatment()
     println()
     Thread.sleep(4000)
-    gamer.takeDamage()
+    gamer.takeDamage(70)
     println()
     Thread.sleep(4000)
-    gamer.takeDamage()
-    println()
-    Thread.sleep(4000)
-    gamer.treatment()               // Это проверка на невозможность лечения после смерти (условие).
+    gamer.takeDamage(200)
+
 }
