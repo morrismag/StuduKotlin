@@ -1,27 +1,29 @@
 package lesson18
 
-abstract class AbstractFigure(nameFigure: String) {
-    abstract fun drawFigure()
-
-}
+abstract class AbstractFigure(nameFigure: String)
 
 class Point(
     val nameFigure: String = "Точка",
-) : AbstractFigure(nameFigure) {
-    override fun drawFigure() {
+) : AbstractFigure(nameFigure)
+
+class Circle(
+    val nameFigure: String = "Круг",
+) : AbstractFigure(nameFigure)
+
+class Rectangle(
+    val nameFigure: String = "Прямоугольник",
+) : AbstractFigure(nameFigure)
+
+class Screen {
+    fun drawFigurePoint(figureName: Point) {
         println("Введи координату X:")
         val coordinateX = readln().toFloatOrNull() ?: 0
         println("Введи координату Y:")
         val coordinateY = readln().toFloatOrNull() ?: 0
-        println("Функция рисует фигуру \"$nameFigure\" с координатами ($coordinateX,$coordinateY)")
+        println("Функция рисует фигуру \"$figureName\" с координатами ($coordinateX,$coordinateY)")
     }
-}
 
-class Circle(
-    val nameFigure: String = "Круг",
-) : AbstractFigure(nameFigure) {
-
-    override fun drawFigure() {
+    fun drawFigureCircle(figureName: Circle) {
         println("Введи координату X:")
         val coordinateX = readln().toFloatOrNull() ?: 0
         println("Введи координату Y:")
@@ -29,16 +31,12 @@ class Circle(
         println("Введи радиус окружности:")
         val radiusCircle = readln().toFloatOrNull() ?: 0
         println(
-            "Функция рисует фигуру \"$nameFigure\" " +
+            "Функция рисует фигуру \"$figureName\" " +
                     "с центром ($coordinateX,$coordinateY) и радиусом $radiusCircle"
         )
     }
-}
 
-class Rectangle(
-    val nameFigure: String = "Прямоугольник",
-) : AbstractFigure(nameFigure) {
-    override fun drawFigure() {
+    fun drawFigureRectangle(figureName: Rectangle) {
         println("Введи координату X:")
         val coordinateX = readln().toFloatOrNull() ?: 0
         println("Введи координату Y:")
@@ -46,23 +44,11 @@ class Rectangle(
         println("Введи диагональ прямоугольника:")
         val diagRectangle = readln().toFloatOrNull() ?: 0
         println(
-            "Функция рисует фигуру \"$nameFigure\" " +
+            "Функция рисует фигуру \"$figureName\" " +
                     "с базовой точкой ($coordinateX,$coordinateY) и диагональю $diagRectangle"
         )
     }
 }
-
-class Screen {
-    fun drawFigure(figure: AbstractFigure) {
-        when (figure) {
-            is Point -> figure.drawFigure()
-            is Circle -> figure.drawFigure()
-            is Rectangle -> figure.drawFigure()
-            else -> println("Ты не выбрал ни одну фигуру")
-        }
-    }
-}
-
 
 fun main() {
     val pointTest = Point()
@@ -73,9 +59,9 @@ fun main() {
     println("Выбери и напиши, какую фигуру нарисовать:\nТочка, Круг, Прямоугольник")
 
     when (readln()) {
-        "Точка" -> screenTest.drawFigure(pointTest)
-        "Круг" -> screenTest.drawFigure(circleTest)
-        "Прямоугольник" -> screenTest.drawFigure(rectangleTest)
+        "Точка" -> screenTest.drawFigurePoint(pointTest)
+        "Круг" -> screenTest.drawFigureCircle(circleTest)
+        "Прямоугольник" -> screenTest.drawFigureRectangle(rectangleTest)
         else -> println("Ты не выбрал ни одну фигуру")
     }
 }
