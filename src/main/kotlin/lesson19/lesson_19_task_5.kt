@@ -1,9 +1,13 @@
 package lesson19
 
-class User(
-    var nameUser: String,
-    var genderUser: String,
+class User( var nameUser: String,
+            var genderUser: String,
 )
+
+enum class Gender {
+    MAN,
+    WOMAN,
+}
 
 fun main() {
     println(
@@ -15,12 +19,14 @@ fun main() {
     for (i in 0..4) {
         println("Введите имя следующего пользователя:")
         var uName = readln()
+
         while (uName == "") {
             println("Вы не ввели имя пользователя. Введите имя пользователя:")
             uName = readln()
         }
         println("Введите пол пользователя:")
-        var uGender = readln()
+        var uGender: String = readln()
+
         while (uGender !in listOf(Gender.MAN.name, Gender.WOMAN.name)) {
             println(
                 "Уважаемый! Учите мат часть! Не фиг спорить с природой!\n" +
@@ -28,22 +34,17 @@ fun main() {
             )
             uGender = readln()
         }
-        // val user = User(uName,uGender)
+
         listUser.add(i, createCardUser(uName, uGender))
     }
+
     listUser.forEach {
         println()
         println(it.nameUser)
         println(it.genderUser)
-
     }
 }
 
-enum class Gender {
-    MAN,
-    WOMAN,
-}
-
-fun createCardUser(nameUser: String, genderUser: String): User {
+private fun createCardUser(nameUser: String, genderUser:String): User {
     return User(nameUser, genderUser)
 }
