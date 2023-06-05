@@ -7,9 +7,9 @@ class Gamer(
 
 fun main() {
     val gamer = Gamer("Den", true)
-    val checkKey = fun(flagKey: Boolean) {
-        if (flagKey) println("Можешь пройти ${gamer.nameGamer}.")
+    val checkKey = {
+        if (gamer.keyIsOrNot) println("Можешь пройти ${gamer.nameGamer}.")
         else println("Ищи ключ, салага.")
     }
-    checkKey(gamer.keyIsOrNot)
+    checkKey()
 }
