@@ -16,17 +16,13 @@ class Forum() {
 
     var lastUserId = 0
 
-    fun newUser(): User {
+    fun newUser(nameUser: String): User {
         ++lastUserId
-        println("Введи нового пользователя:")
-        val nameUser = readln()
         return User(idUser = lastUserId, nameUser)
     }
 
-    fun newMessage(user: User): Message {
+    fun newMessage(user: User, messageUser: String): Message {
         user.messageId++
-        println("Введи сообщение от ${user.loginUser}:")
-        val messageUser = readln()
         return Message(idMessage = user.messageId, authorId = user.idUser, messageUser = messageUser)
     }
 
@@ -37,12 +33,28 @@ class Forum() {
 
 fun main() {
     val forum = Forum()
-    val user1 = forum.newUser()
-    val user2 = forum.newUser()
-    val message1User1 = forum.newMessage(user1)
-    val message2User1 = forum.newMessage(user1)
-    val message1User2 = forum.newMessage(user2)
-    val message2User2 = forum.newMessage(user2)
+
+    println("Введи нового пользователя:")
+    var nameUser = readln()
+    val user1 = forum.newUser(nameUser)
+    println("Введи нового пользователя:")
+    nameUser = readln()
+    val user2 = forum.newUser(nameUser)
+
+    println("Введи сообщение от ${user1.loginUser}:")
+    var messageUser = readln()
+    val message1User1 = forum.newMessage(user1, messageUser)
+
+    println("Введи сообщение от ${user1.loginUser}:")
+    messageUser = readln()
+    val message2User1 = forum.newMessage(user1, messageUser)
+
+    println("Введи сообщение от ${user2.loginUser}:")
+    messageUser = readln()
+    val message1User2 = forum.newMessage(user2, messageUser)
+    println("Введи сообщение от ${user2.loginUser}:")
+    messageUser = readln()
+    val message2User2 = forum.newMessage(user2, messageUser)
 
     forum.printThread(user1, message1User1)
     forum.printThread(user1, message2User1)
