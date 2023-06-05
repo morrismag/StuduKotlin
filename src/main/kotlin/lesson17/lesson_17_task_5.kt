@@ -6,13 +6,13 @@ class User(loginUser: String, passwordUser: String) {
             field = value
             println("Успешная смена логина на \"$field\"!")
         }
-    var passwordUser: String = ""
+    var passwordUser: String = passwordUser
         set(value) {
             println("Вы не можете сменить пароль!")
         }
-        get() {
-            field = field.replace(Regex(".(?<=.)"), "*")
-            return field
+        get(): String {
+            val value = field.replace(Regex(".(?<=.)"), "*")
+            return value
         }
 }
 
