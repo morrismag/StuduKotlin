@@ -1,7 +1,7 @@
 package lesson20
 
 class Robot(
-    val list: List<String> = listOf(
+    val listPhrases: List<String> = listOf(
         "Голос истины противен слуху.",
         "Кто не борется, тот непобедим.",
         "Вами управляет тот, кто вас злит.",
@@ -9,24 +9,21 @@ class Robot(
         "Человек с самого рождения умирает. "
     )
 ) {
-    val result: String = list.random()
-    fun say(): String? {
-        return if (modifier == null) result
-        else modifier?.invoke(result)
+    private var modifier: ((String) -> String) = { it }
+
+    fun say() {
+        val phraseRandom = listPhrases.random()
+        println(phraseRandom)
+        println(modifier(phraseRandom))
     }
 
-    private var modifier: ((String) -> String)? = null
-
     fun setModifier(modifierA: (String) -> String) {
-        { modifier = modifierA }
+        this.modifier = modifierA
     }
 }
 
 fun main() {
     val robotSay = Robot()
-    println(robotSay.say())
     robotSay.setModifier { it.reversed() }
-    println(robotSay.say())
-
-
+    robotSay.say()
 }
