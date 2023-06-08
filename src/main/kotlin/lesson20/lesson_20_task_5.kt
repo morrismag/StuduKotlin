@@ -13,7 +13,6 @@ class Robot(
 
     fun say() {
         val phraseRandom = listPhrases.random()
-        println(phraseRandom)
         println(modifier(phraseRandom))
     }
 
@@ -24,6 +23,7 @@ class Robot(
 
 fun main() {
     val robotSay = Robot()
+    robotSay.say()
     robotSay.setModifier { it.reversed() }
     robotSay.say()
 }
